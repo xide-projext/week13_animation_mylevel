@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
 
 class SimpleRotationAnimation extends StatefulWidget {
+  const SimpleRotationAnimation({Key? key}) : super(key: key);
+
   @override
-  _SimpleRotationAnimationState createState() =>
-      _SimpleRotationAnimationState();
+  SimpleRotationAnimationState createState() => SimpleRotationAnimationState();
 }
 
-class _SimpleRotationAnimationState extends State<SimpleRotationAnimation>
+class SimpleRotationAnimationState extends State<SimpleRotationAnimation>
     with SingleTickerProviderStateMixin {
   AnimationController? _controller;
+
+  void speedUp(duration) {
+    setState(() {
+      _controller!.duration = Duration(seconds: duration);
+      _controller!.repeat();
+    });
+  }
 
   @override
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 1),
       vsync: this,
     )..repeat();
   }
