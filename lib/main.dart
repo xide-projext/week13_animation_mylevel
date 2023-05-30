@@ -70,7 +70,11 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       // _counter++;
       _duration = _duration + 1;
+      // 이 코드는 globalKey를 사용하여 SimpleRotationAnimation 위젯의 상태에 접근하고,
+      // 그 상태의 speedUp 메서드를 호출하여 애니메이션의 속도를 조절합니다.
+      // ?. 오퍼레이터는 globalKey.currentState가 null이 아닌 경우에만 speedUp 메서드를 호출하도록 합니다.
       globalKey.currentState?.speedUp(_duration);
+      globalKey.currentState?.scaleUp(_duration * 100);
     });
   }
 

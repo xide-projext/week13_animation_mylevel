@@ -18,6 +18,13 @@ class SimpleRotationAnimationState extends State<SimpleRotationAnimation>
     with SingleTickerProviderStateMixin {
   // AnimationController를 정의합니다. 이 컨트롤러는 애니메이션을 제어합니다.
   AnimationController? _controller;
+  double _size = 100.0;
+
+  void scaleUp(double newSize) {
+    setState(() {
+      _size = newSize;
+    });
+  }
 
   // speedUp 함수를 정의합니다. 이 함수는 애니메이션의 속도를 빠르게 합니다.
   // 이 함수는 새로운 duration 값을 받아서 컨트롤러의 duration을 변경하고 애니메이션을 재시작합니다.
@@ -57,8 +64,8 @@ class SimpleRotationAnimationState extends State<SimpleRotationAnimation>
     return RotationTransition(
       turns: _controller!,
       child: Container(
-        width: 100.0,
-        height: 100.0,
+        width: _size,
+        height: _size,
         color: Colors.blue,
       ),
     );
