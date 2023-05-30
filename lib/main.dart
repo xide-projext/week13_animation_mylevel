@@ -74,7 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
       // 그 상태의 speedUp 메서드를 호출하여 애니메이션의 속도를 조절합니다.
       // ?. 오퍼레이터는 globalKey.currentState가 null이 아닌 경우에만 speedUp 메서드를 호출하도록 합니다.
       globalKey.currentState?.speedUp(_duration);
-      globalKey.currentState?.scaleUp(_duration * 100);
+      globalKey.currentState?.changeScale();
+      // globalKey.currentState?.scaleUp(_duration * 100);
     });
   }
 

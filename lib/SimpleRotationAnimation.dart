@@ -18,6 +18,12 @@ class SimpleRotationAnimationState extends State<SimpleRotationAnimation>
     with SingleTickerProviderStateMixin {
   // AnimationController를 정의합니다. 이 컨트롤러는 애니메이션을 제어합니다.
   AnimationController? _controller;
+  double scale = 1.0;
+
+  void changeScale() {
+    setState(() => scale = scale == 1.0 ? 3.0 : 1.0);
+  }
+
   double _size = 100.0;
 
   void scaleUp(double newSize) {
@@ -63,11 +69,14 @@ class SimpleRotationAnimationState extends State<SimpleRotationAnimation>
   Widget build(BuildContext context) {
     return RotationTransition(
       turns: _controller!,
-      child: Container(
-        width: _size,
-        height: _size,
-        color: Colors.blue,
-      ),
+      child: AnimatedScale(
+          scale: scale,
+          duration: const Duration(seconds: 2),
+          child: Container(
+            width: 100,
+            height: 100,
+            color: Colors.blue,
+          )),
     );
   }
 }
